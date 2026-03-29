@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Tech/Data palette — cool slate-blue with electric blue accent */
+    --background: 220 20% 97%;
+    --foreground: 222 47% 11%;
+    --card: 220 20% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 220 20% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 217 91% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 93%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 220 14% 93%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 217 91% 95%;
+    --accent-foreground: 217 91% 35%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 88%;
+    --input: 214 32% 88%;
+    --ring: 217 91% 45%;
+    --radius: 0.5rem;
+
+    /* Semantic extras */
+    --success: 142 71% 35%;
+    --success-bg: 142 71% 95%;
+    --warning: 38 92% 50%;
+    --warning-bg: 38 92% 95%;
+    --gold: 43 96% 50%;
+  }
+
+  .dark {
+    --background: 222 47% 8%;
+    --foreground: 210 40% 92%;
+    --card: 222 47% 10%;
+    --card-foreground: 210 40% 92%;
+    --popover: 222 47% 10%;
+    --popover-foreground: 210 40% 92%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 8%;
+    --secondary: 217 33% 18%;
+    --secondary-foreground: 210 40% 92%;
+    --muted: 217 33% 18%;
+    --muted-foreground: 215 20% 60%;
+    --accent: 217 33% 20%;
+    --accent-foreground: 217 91% 70%;
+    --destructive: 0 63% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 217 33% 22%;
+    --input: 217 33% 22%;
+    --ring: 217 91% 60%;
+
+    --success: 142 71% 50%;
+    --success-bg: 142 71% 10%;
+    --warning: 38 92% 60%;
+    --warning-bg: 38 92% 10%;
+    --gold: 43 96% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'General Sans', 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Cabinet Grotesk', 'General Sans', system-ui, sans-serif;
+    line-height: 1.2;
+  }
+}
+
+/* Score badge colors */
+.score-high { @apply bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400; }
+.score-mid { @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400; }
+.score-low { @apply bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400; }
+
+/* Shimmer loading skeleton */
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, hsl(var(--muted)) 25%, hsl(var(--secondary)) 50%, hsl(var(--muted)) 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 4px;
+}
+
+/* Comparison table */
+.compare-table th {
+  @apply bg-muted text-muted-foreground text-xs font-semibold uppercase tracking-wide px-4 py-3 text-left;
+}
+.compare-table td {
+  @apply px-4 py-3 text-sm border-b border-border;
+}
+.compare-table tr:last-child td {
+  @apply border-b-0;
+}
+
+/* Best column highlight */
+.col-best {
+  background: hsl(var(--accent));
+  border-left: 2px solid hsl(var(--primary));
+  border-right: 2px solid hsl(var(--primary));
+}
+.col-best-header {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border-left: 2px solid hsl(var(--primary));
+  border-right: 2px solid hsl(var(--primary));
+}
+
+/* Rank badge */
+.rank-1 { background: hsl(var(--gold)); color: #000; }
+.rank-2 { @apply bg-slate-300 text-slate-800 dark:bg-slate-600 dark:text-slate-100; }
+.rank-3 { background: #cd7f32; color: #fff; }
